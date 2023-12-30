@@ -1,0 +1,52 @@
+
+{% extends "base.html" %}
+
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+  {% load widget_tweaks %}
+  <div class="jumbotron d-flex align-items-center">
+    <div class="container">
+      <div class="card mx-auto" style="max-width: 400px;">
+        <div class="card-header bg-primary text-white text-center">
+          <h2>User Registration</h2>
+        </div>
+        <div class="card-body">
+          {% if note %}
+            <div class="alert alert-info" role="alert">
+              {{note}}
+            </div>
+          {% endif %}
+          <form action="" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+              <div class="mb-3">
+                {{ field.label_tag }}
+                {% render_field field class="form-control" %}
+                {% if field.errors %}
+                  <div class="invalid-feedback">
+                    {{ field.errors|join:", " }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .jumbotron {
+      min-height: 100vh;
+      background-color: #f8f9fa;
+    }
+    label {
+      text-align: left;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  </style>
+{% endblock %}

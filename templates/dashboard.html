@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %} 
+  <h2>Welcome, {{request.user.get_full_name }}</h2> <hr> <br> &nbsp; &nbsp;
+  {% comment %} <h2>{{request.user.get_Profile_pic}}</h2> {% endcomment %}
+  <h3 style="text-align:center;font-family:verdana;"><a href="{% url 'appointment' %}" style="color:#FF0000;">Click Here To Book Appointment</a></h3><br> &nbsp;
+  <h3 style="text-align:center;font-family:verdana;"><a href="{% url 'appointment_list' %}" style="color:#0000FF;">Check Booked Appointment</a></h3><br> &nbsp;
+  <h3 style="text-align:center; font-family:verdana;"><a href="{% url 'index' %}" style="color:#008B8B;">Back To Home </a></h3>
+
+<style>
+{% comment %} body {
+  background-color: #FBEEC1;
+} {% endcomment %}
+h2 { color:#05386B;
+}
+
+h3 { color:#008B8B;
+}
+
+hr {
+  height:2px; border-width:0; color:gray; background-color:gray; width:35%; margin-left:0}
+@media only screen and (max-width: 600px) {
+  hr{
+    width:auto;
+    }
+
+}
+
+</style>
+{% endblock %}
+
+
+
